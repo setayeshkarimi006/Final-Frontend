@@ -1,4 +1,23 @@
 /* ================= HEADER ================= */
+import { PRODUCTS } from './products.js';
+
+/* ---------- Shared cart (same storage as shop.js) ---------- */
+const CART_KEY = 'valensa-cart';
+const readCart = () => {
+  try {
+    const c = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    return Array.isArray(c) ? c.filter((i) => i && i.qty > 0) : [];
+  } catch (e) { return []; }
+};
+const writeCart = (c) => {
+  try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch (e) { /* ignore */ }
+};
+const syncBadge = () => {
+  const b = document.getElementById('hdr-cart-count');
+  if (b) b.textContent = String(readCart().reduce((s, i) => s + i.qty, 0));
+};
+syncBadge();                                  // عدد درست موقع باز شدن صفحه
+window.addEventListener('storage', syncBadge); // اگه سبد توی تب دیگه عوض شد
 (() => {
   const header = document.getElementById('site-header');
   const onScroll = () => header.classList.toggle('hdr-is-scrolled', window.scrollY > 24);
@@ -205,8 +224,8 @@
                 <span class="text-lg font-medium text-lilac-800">${money.format(finalPrice)}</span>
                 ${off ? `<span class="text-[13px] text-lilac-800/45 line-through">${money.format(price)}</span>` : ''}
               </div>
-              <button class="deal-add" type="button" aria-label="Add ${esc(p.name)} to cart">+</button>
-            </div>
+<button class="deal-add" type="button" data-name="${esc(p.name)}" aria-label="Add ${esc(p.name)} to cart">+</button>       
+     </div>
           </div>
         </article>
       </div>`;
@@ -245,15 +264,23 @@
     }
   }, true);
 
-  // Retry + add-to-cart
+   // Retry + add-to-cart
   document.getElementById('deal-box').addEventListener('click', (e) => {
-    if (e.target.closest('#deal-retry')) loadDeals();
-    if (e.target.closest('.deal-add')) {
-      const badge = document.getElementById('hdr-cart-count');
-      badge.textContent = String((parseInt(badge.textContent, 10) || 0) + 1);
-    }
-  });
+    if (e.target.closest('#deal-retry')) { loadDeals(); return; }
 
+    const btn = e.target.closest('.deal-add');
+    if (!btn) return;
+
+    const product = PRODUCTS.find((p) => p.name === btn.dataset.name);
+    if (!product) return;
+
+    const cart = readCart();
+    const item = cart.find((i) => i.id === product.id);
+    if (item) item.qty = Math.min(item.qty + 1, 99);
+    else cart.push({ id: product.id, qty: 1 });
+    writeCart(cart);
+    syncBadge();
+  });
   // Countdown to local midnight
   const tH = document.getElementById('deal-timer-h');
   const tM = document.getElementById('deal-timer-m');
