@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Velvet Cloud Cleanser",
+      "category": "Cleansers",
+      "description": "A creamy, low-foam cleanser that lifts impurities without stripping the skin.",
+      "price": 34,
+      "discount": 20,
+      "image": "/pro/11.png"
+    },
+    {
+      "id": 2,
+      "name": "Lilac Glow Serum",
+      "category": "Serums",
+      "description": "Vitamin C and niacinamide for visibly brighter, more even-toned skin.",
+      "price": 62,
+      "discount": 25,
+      "image": "/pro/12.png"
+    },
+    {
+      "id": 3,
+      "name": "Silk Barrier Cream",
+      "category": "Moisturizers",
+      "description": "Rich ceramide moisturizer that locks in hydration for up to 48 hours.",
+      "price": 48,
+      "discount": 15,
+      "image": "/pro/18.png"
+    },
+    {
+      "id": 4,
+      "name": "Daylight Veil SPF 50",
+      "category": "Sun Care",
+      "description": "Weightless, invisible sunscreen with no white cast and a soft-focus finish.",
+      "price": 29,
+      "discount": 30,
+      "image": "/pic/Lavender Dew Cosmetic Tube.png"
+    },
+    {
+      "id": 5,
+      "name": "Midnight Renewal Mask",
+      "category": "Masks",
+      "description": "An overnight sleeping mask that wakes your skin up plump and rested.",
+      "price": 44,
+      "discount": 18,
+      "image": "/pic/Lavender Foam Cleanser Elegance.png"
+    },
+    {
+      "id": 6,
+      "name": "Petal Tint Lip Oil",
+      "category": "Makeup",
+      "description": "Glossy, nourishing colour with a subtle rose-lilac sheer.",
+      "price": 22,
+      "discount": 10,
+      "image": "/pic/Lavender Frost Luxury Cosmetic Bottle.png"
+    },
+    {
+      "id": 7,
+      "name": "Dew Drop Hyaluronic Mist",
+      "category": "Serums",
+      "description": "A fine mist that refreshes and replenishes skin over makeup or bare.",
+      "price": 27,
+      "discount": 22,
+      "image": "/pic/Lavender Glow Spa Skincare Portrait.png"
+    },
+    {
+      "id": 8,
+      "name": "Cashmere Skin Tint",
+      "category": "Makeup",
+      "description": "Breathable, buildable coverage with a natural, luminous finish.",
+      "price": 38,
+      "discount": 12,
+      "image": "/pic/Lavender Serum Dropper Glow.png"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop · Valensa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header" class="hdr-root sticky top-0 z-50 w-full bg-white">
+
+  <div class="hdr-topbar overflow-hidden bg-lilac-800 text-cream-100">
+    <div id="hdr-ticker" class="relative mx-auto h-full max-w-7xl px-4">
+      <p class="hdr-msg hdr-msg-active">Complimentary shipping on orders over $60</p>
+      <p class="hdr-msg">New · The Autumn Ritual collection has arrived</p>
+      <p class="hdr-msg">Two free samples with every order</p>
+    </div>
+  </div>
+
+  <div class="mx-auto grid h-[var(--hdr-main)] max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-4 lg:px-12">
+
+    <!-- Left -->
+    <div class="flex items-center">
+      <button id="hdr-menu-btn" type="button" class="hdr-menu-btn grid h-10 w-10 place-items-center rounded-full hover:bg-lilac-50 lg:hidden"
+              aria-expanded="false" aria-controls="hdr-mobile-panel" aria-label="Toggle menu">
+        <span class="hdr-line hdr-line-top"></span>
+        <span class="hdr-line hdr-line-mid"></span>
+        <span class="hdr-line hdr-line-bot"></span>
+      </button>
+
+      <nav class="hidden items-center gap-9 lg:flex" aria-label="Primary">
+        <a href="./index.html" class="hdr-link">Home</a>
+        <a href="#" class="hdr-link">Skincare</a>
+        <a href="#" class="hdr-link">Makeup</a>
+        <a href="#" class="hdr-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <!-- Center: logo -->
+    <a href="./index.html" id="hdr-logo-slot" class="flex items-center justify-center" aria-label="Valensa home">
+      <div class="grid h-10 w-32 place-items-center rounded-md sm:w-40">
+        <img src="/pic/Lavender Valensa Beauty Logo.png" alt="Valensa" />
+      </div>
+    </a>
+
+    <!-- Right -->
+    <div class="flex items-center justify-end gap-0.5 sm:gap-2">
+      <a href="#" class="hdr-link mr-4 hidden xl:inline-block">Journal</a>
+
+      <button type="button" class="hdr-icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button type="button" class="hdr-icon-btn hidden sm:grid" aria-label="Account">
+        <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      </button>
+      <button type="button" class="hdr-icon-btn hidden sm:grid" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
+      </button>
+
+      <!-- Cart button + dropdown bag (opens right under the icon) -->
+      <div class="relative">
+        <button id="hdr-cart-btn" type="button" class="hdr-icon-btn relative"
+                aria-label="Open shopping bag" aria-expanded="false" aria-controls="crt-panel">
+          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span id="hdr-cart-count" class="absolute right-0.5 top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-lilac-600 px-1 text-[10px] font-medium text-white">0</span>
+        </button>
+
+        <section id="crt-panel" class="crt-panel" role="dialog" aria-label="Shopping bag" tabindex="-1">
+
+          <div class="crt-head">
+            <div class="flex items-baseline gap-2">
+              <h2 class="font-display text-2xl text-lilac-900">Your bag</h2>
+              <span id="crt-count" class="text-[13px] font-light text-lilac-800/70">(0)</span>
+            </div>
+            <button id="crt-close" type="button" class="crt-close" aria-label="Close bag">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+
+          <div id="crt-ship" class="crt-ship" hidden>
+            <p id="crt-ship-text" class="text-[12.5px] text-lilac-800"></p>
+            <div class="crt-ship-track"><div id="crt-ship-bar" class="crt-ship-bar"></div></div>
+          </div>
+
+          <ul id="crt-list" class="crt-list" hidden></ul>
+
+          <div id="crt-empty" class="crt-empty">
+            <span class="grid h-14 w-14 place-items-center rounded-full bg-lilac-50 text-lilac-500">
+              <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+            </span>
+            <p class="mt-4 font-display text-2xl text-lilac-900">Your bag is empty</p>
+            <p class="mt-1 text-[13.5px] font-light text-lilac-800/70">Add a product to start your ritual.</p>
+          </div>
+
+          <div id="crt-footer" class="crt-footer" hidden>
+            <div class="flex items-center justify-between">
+              <span class="text-[12px] uppercase tracking-[0.18em] text-lilac-700">Subtotal</span>
+              <span id="crt-subtotal" class="text-xl font-medium text-lilac-900">$0.00</span>
+            </div>
+            <p id="crt-savings" class="mt-1 text-right text-[12.5px] text-lilac-600" hidden></p>
+            <p class="mt-1 text-[12px] font-light text-lilac-800/60">Shipping and taxes are calculated at checkout.</p>
+            <button id="crt-checkout" type="button" class="crt-checkout mt-4">Checkout</button>
+            <button id="crt-clear" type="button" class="crt-clear mt-3">Clear bag</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="hdr-mobile-panel" class="hdr-mobile-panel bg-white lg:hidden">
+    <nav class="flex flex-col px-6 pb-5 pt-2" aria-label="Mobile">
+      <a href="./index.html" class="hdr-mobile-link">Home</a>
+      <a href="./shop.html" class="hdr-mobile-link">Shop</a>
+      <a href="#" class="hdr-mobile-link">Skincare</a>
+      <a href="#" class="hdr-mobile-link">Makeup</a>
+      <a href="#" class="hdr-mobile-link">Best Sellers</a>
+      <a href="#" class="hdr-mobile-link">Journal</a>
+      <a href="#" class="hdr-mobile-link">Account</a>
+    </nav>
+  </div>
+
+  <div class="hdr-hairline"></div>
+</header>
+
+<!-- Dark layer behind the header (header is z-50, this is z-40) -->
+<div id="crt-overlay" class="crt-overlay" aria-hidden="true"></div>
+
+<main>
+  <!-- ================= SEARCH ================= -->
+  <section id="shp-top" class="bg-white pb-6 pt-10 sm:pt-14">
+    <div class="shp-container text-center">
+      <p class="text-[11px] uppercase tracking-[0.3em] text-lilac-500">The collection</p>
+      <h1 class="mt-2 font-display text-4xl text-lilac-900 sm:text-5xl">Find your <span class="italic text-lilac-600">ritual</span></h1>
+
+      <div class="shp-search mx-auto mt-8 max-w-xl">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-lilac-500" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="shp-search" type="search" placeholder="Search by name or category…" autocomplete="off" class="shp-search-input" aria-label="Search products" />
+        <button id="shp-clear" type="button" class="shp-clear" aria-label="Clear search" hidden>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <div id="shp-chips" class="mt-5 flex flex-wrap justify-center gap-2"></div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTS ================= -->
+  <section id="shp-section" class="bg-white pb-24 pt-4">
+    <div class="shp-container">
+      <p id="shp-count" class="mb-6 text-center text-[13px] font-light text-lilac-800/70" aria-live="polite"></p>
+
+      <div id="shp-grid" class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5"></div>
+
+      <div id="shp-empty" class="py-20 text-center" hidden>
+        <p class="font-display text-3xl text-lilac-900">No products found</p>
+        <p class="mt-2 text-[14px] font-light text-lilac-800/70">Try a different word or choose another category.</p>
+        <button id="shp-reset" type="button" class="shp-reset mt-6">Show all products</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="module" src="./src/shop.js"></script>
+</body>
+</html>

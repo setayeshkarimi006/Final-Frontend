@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./src/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>finall-frontend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+  <!--header-->
+<header id="site-header" class="hdr-root sticky top-0 z-50 w-full bg-white">
+
+  <!-- Announcement ticker -->
+  <div class="hdr-topbar overflow-hidden bg-lilac-800 text-cream-100">
+    <div id="hdr-ticker" class="relative mx-auto h-full max-w-7xl px-4">
+      <p class="hdr-msg hdr-msg-active">Complimentary shipping on orders over $60</p>
+      <p class="hdr-msg">New · The Autumn Ritual collection has arrived</p>
+      <p class="hdr-msg">Two free samples with every order</p>
+    </div>
+  </div>
+
+  <!-- Main bar -->
+  <div class="mx-auto grid h-[var(--hdr-main)] max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-4 lg:px-12">
+
+    <!-- Left: menu button (mobile) + nav (desktop) -->
+    <div class="flex items-center">
+      <button id="hdr-menu-btn" class="hdr-menu-btn grid h-10 w-10 place-items-center rounded-full hover:bg-lilac-50 lg:hidden"
+              aria-expanded="false" aria-controls="hdr-mobile-panel" aria-label="Toggle menu">
+        <span class="hdr-line hdr-line-top"></span>
+        <span class="hdr-line hdr-line-mid"></span>
+        <span class="hdr-line hdr-line-bot"></span>
+      </button>
+
+      <nav class="hidden items-center gap-9 lg:flex" aria-label="Primary">
+        <a href="./shop.html" class="hdr-link">Shop</a>
+        <a href="#" class="hdr-link">Skincare</a>
+        <a href="#" class="hdr-link">Makeup</a>
+        <a href="#" class="hdr-link">Best Sellers</a>
+      </nav>
+    </div>
+
+    <!-- Center: LOGO SLOT (replace the inner div with your <img>) -->
+    <a href="#" id="hdr-logo-slot" class="flex items-center justify-center" aria-label="Home">
+      <div class="grid h-10 w-32 place-items-center rounded-md  text-[10px] tracking-[0.3em] text-lilac-400 sm:w-40">
+<img src="./public/pic/Lavender Valensa Beauty Logo.png" alt="">    
+  </div>
+    </a>
+
+    <!-- Right: actions -->
+    <div class="flex items-center justify-end gap-0.5 sm:gap-2">
+      <a href="#" class="hdr-link mr-4 hidden xl:inline-block">Journal</a>
+
+      <button class="hdr-icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="hdr-icon-btn hidden sm:grid" aria-label="Account">
+        <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      </button>
+      <button class="hdr-icon-btn hidden sm:grid" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
+      </button>
+      <button class="hdr-icon-btn relative" aria-label="Cart">
+        <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span id="hdr-cart-count" class="absolute right-0.5 top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-lilac-600 px-1 text-[10px] font-medium text-white">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile panel -->
+  <div id="hdr-mobile-panel" class="hdr-mobile-panel bg-white lg:hidden">
+    <nav class="flex flex-col px-6 pb-5 pt-2" aria-label="Mobile">
+      <a href="./shop.html" class="hdr-mobile-link">Shop</a>
+      <a href="#" class="hdr-mobile-link">Skincare</a>
+      <a href="#" class="hdr-mobile-link">Makeup</a>
+      <a href="#" class="hdr-mobile-link">Best Sellers</a>
+      <a href="#" class="hdr-mobile-link">Journal</a>
+      <a href="#" class="hdr-mobile-link">Account</a>
+    </nav>
+  </div>
+
+  <!-- Thin gold hairline -->
+  <div class="hdr-hairline"></div>
+</header>
+
+
+
+<!--hero-->
+<section id="hero-section" class="hero-section relative overflow-hidden bg-white">
+  <div class="hero-bg-aura pointer-events-none absolute inset-0"></div>
+
+  <div class="relative mx-auto grid h-full max-w-[1440px] grid-cols-1 items-center gap-4 px-6 lg:grid-cols-[1fr_auto_1fr] lg:grid-rows-1 lg:gap-6 lg:px-12 lg:py-6">
+
+    <!-- LEFT: slogan -->
+    <div class="order-2 pb-10 text-center lg:order-1 lg:pb-0 lg:text-left">
+      <p class="hero-reveal inline-flex items-center gap-2 rounded-full border border-lilac-100 bg-white/80 px-4 py-1.5 text-[11px] uppercase tracking-[0.22em] text-lilac-700" style="--d:.1s">
+        <span class="hero-pulse-dot"></span> The Autumn Ritual · New Season
+      </p>
+      <h1 class="hero-reveal mt-6 font-display text-5xl leading-[1.02] text-lilac-900 sm:text-6xl xl:text-7xl" style="--d:.25s">
+        Radiance,<br /><span class="hero-gradient-text italic">refined.</span>
+      </h1>
+      <span class="hero-reveal mx-auto mt-6 block h-px w-16 bg-gold-400 lg:mx-0" style="--d:.4s"></span>
+      <p class="hero-reveal mx-auto mt-6 max-w-md text-[15px] font-light leading-relaxed text-lilac-800/80 lg:mx-0" style="--d:.5s">
+        Clinically inspired skincare and artful beauty, crafted for skin that glows from within.
+      </p>
+      <div class="hero-reveal mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start" style="--d:.65s">
+        <a href="#" class="hero-btn-solid">Shop the collection</a>
+        <a href="#" class="hero-btn-ghost">Discover rituals</a>
+      </div>
+    </div>
+
+    <!-- CENTER: 3D stage -->
+    <div id="hero-stage" class="hero-stage relative order-1 h-[56svh] min-h-[380px] px-6 lg:order-2 lg:h-full lg:px-20">
+
+      <div class="hero-glow-wrap absolute inset-0 flex items-center justify-center" data-depth="-0.4">
+        <div class="hero-glow"></div>
+      </div>
+
+      <div class="hero-orbit-wrap pointer-events-none absolute inset-0" data-depth="-0.2">
+        <div class="hero-orbit hero-orbit-a"></div>
+        <div class="hero-orbit hero-orbit-b"></div>
+      </div>
+
+      <div class="hero-floor absolute bottom-1 left-1/2 h-6 w-[55%]" data-depth="0.2"></div>
+
+      <div id="hero-sparks-back" class="pointer-events-none absolute inset-0 z-0"></div>
+
+      <div id="hero-tilt" class="hero-tilt relative z-10 flex h-full items-end justify-center">
+        <div id="hero-figure" class="hero-figure relative h-full">
+          <img id="hero-img-back" class="hero-img-back absolute inset-0 h-full w-full object-contain" src="images/hero-woman.png" alt="" aria-hidden="true" />
+          <img id="hero-img" class="relative h-full w-auto max-w-none object-contain" src="./public/pic/1.png" alt="Woman applying a skincare serum" fetchpriority="high" />
+          <img id="hero-img-sheen" class="hero-img-sheen pointer-events-none absolute inset-0 h-full w-full object-contain" src="images/hero-woman.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+
+      <div id="hero-sparks-front" class="pointer-events-none absolute inset-0 z-20"></div>
+    </div>
+
+    <!-- RIGHT: trust chips -->
+    <div class="order-3 flex flex-wrap justify-center gap-3 pb-10 lg:flex-col lg:items-end lg:gap-4 lg:pb-0">
+      <div class="hero-chip hero-reveal" style="--d:.7s">
+        <span class="hero-chip-icon">✦</span> Dermatologist tested
+      </div>
+      <div class="hero-chip hero-reveal" style="--d:.85s">
+        <span class="hero-chip-icon">✦</span> Cruelty free
+      </div>
+      <div class="hero-chip hero-reveal" style="--d:1s">
+        <span class="hero-chip-icon">✦</span> Clean formulas
+      </div>
+      <p class="hero-reveal mt-2 hidden max-w-[220px] text-right font-display text-2xl italic leading-snug text-lilac-700 lg:block" style="--d:1.15s">
+        “Your skin, in its best light.”
+      </p>
+    </div>
+  </div>
+</section>
+
+<!--6pic-->
+<!-- Thin lilac divider -->
+<div class="h-px w-full bg-lilac-200"></div>
+
+<!-- ================= CATEGORIES ================= -->
+<section id="cat-section" class="bg-white pb-16 pt-14 sm:pt-16">
+  <div class="sec-container">
+
+    <div class="mb-10 text-center">
+      <p class="text-[11px] uppercase tracking-[0.3em] text-lilac-500">Explore</p>
+      <h2 class="mt-2 font-display text-3xl text-lilac-900 sm:text-4xl">Shop by <span class="italic text-lilac-600">category</span></h2>
+    </div>
+
+    <div class="grid grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-6 lg:grid-cols-6 lg:gap-x-8">
+
+      <a href="#" class="cat-item group block text-center">
+        <div class="cat-frame aspect-square overflow-hidden rounded-[22px] bg-lilac-50 sm:rounded-[28px]">
+          <img src="./public/pic/Lavender Foam Cleanser Elegance.png" alt="Cleansers" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        </div>
+        <h3 class="mt-4 font-display text-lg text-lilac-900 sm:text-xl">Cleansers</h3>
+        <p class="mt-0.5 hidden text-[13px] font-light text-lilac-800/70 sm:block">Gentle daily purity</p>
+      </a>
+
+      <a href="#" class="cat-item group block text-center">
+        <div class="cat-frame aspect-square overflow-hidden rounded-[22px] bg-lilac-50 sm:rounded-[28px]">
+          <img src="./public/pic/Lavender Serum Dropper Glow.png" alt="Serums" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        </div>
+        <h3 class="mt-4 font-display text-lg text-lilac-900 sm:text-xl">Serums</h3>
+        <p class="mt-0.5 hidden text-[13px] font-light text-lilac-800/70 sm:block">Targeted glow</p>
+      </a>
+
+      <a href="#" class="cat-item group block text-center">
+        <div class="cat-frame aspect-square overflow-hidden rounded-[22px] bg-lilac-50 sm:rounded-[28px]">
+          <img src="./public/pic/Lavender Glow Cream Ritual.png" alt="Moisturizers" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        </div>
+        <h3 class="mt-4 font-display text-lg text-lilac-900 sm:text-xl">Moisturizers</h3>
+        <p class="mt-0.5 hidden text-[13px] font-light text-lilac-800/70 sm:block">Deep, lasting comfort</p>
+      </a>
+
+      <a href="#" class="cat-item group block text-center">
+        <div class="cat-frame aspect-square overflow-hidden rounded-[22px] bg-lilac-50 sm:rounded-[28px]">
+          <img src="./public/pic/Lavender Dew Cosmetic Tube.png" alt="Sun Care" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        </div>
+        <h3 class="mt-4 font-display text-lg text-lilac-900 sm:text-xl">Sun Care</h3>
+        <p class="mt-0.5 hidden text-[13px] font-light text-lilac-800/70 sm:block">Daily light shield</p>
+      </a>
+
+      <a href="#" class="cat-item group block text-center">
+        <div class="cat-frame aspect-square overflow-hidden rounded-[22px] bg-lilac-50 sm:rounded-[28px]">
+          <img src="./public/pic/Lavender Glow Spa Skincare Portrait.png" alt="Masks" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        </div>
+        <h3 class="mt-4 font-display text-lg text-lilac-900 sm:text-xl">Masks</h3>
+        <p class="mt-0.5 hidden text-[13px] font-light text-lilac-800/70 sm:block">Weekly renewal</p>
+      </a>
+
+      <a href="#" class="cat-item group block text-center">
+        <div class="cat-frame aspect-square overflow-hidden rounded-[22px] bg-lilac-50 sm:rounded-[28px]">
+          <img src="./public/pic/Lavender Frost Luxury Cosmetic Bottle.png" alt="Makeup" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        </div>
+        <h3 class="mt-4 font-display text-lg text-lilac-900 sm:text-xl">Makeup</h3>
+        <p class="mt-0.5 hidden text-[13px] font-light text-lilac-800/70 sm:block">Effortless colour</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEALS (API) ================= -->
+<section id="deal-section" class="bg-white pb-24">
+  <div class="sec-container">
+
+    <div id="deal-box" class="deal-box overflow-hidden rounded-[28px] border border-lilac-100 shadow-[0_30px_60px_-30px_rgba(101,59,145,.35)]">
+
+      <!-- Top: 1/6 -->
+      <div class="deal-top flex items-center justify-between gap-3 px-4 sm:px-8">
+        <div class="min-w-0">
+          <p class="hidden text-[10px] uppercase tracking-[0.3em] text-lilac-100 sm:block">Limited time</p>
+          <h2 class="truncate font-display text-xl text-white sm:text-3xl">Today's Radiance Deals</h2>
+        </div>
+
+        <div class="flex shrink-0 items-center gap-2 sm:gap-5">
+          <div class="flex items-center gap-1.5 text-white" aria-label="Time left" role="timer">
+            <span class="hidden text-[11px] uppercase tracking-[0.2em] text-lilac-100 md:block">Ends in</span>
+            <span id="deal-timer-h" class="deal-time-box">00</span>
+            <span class="text-lilac-100">:</span>
+            <span id="deal-timer-m" class="deal-time-box">00</span>
+            <span class="text-lilac-100">:</span>
+            <span id="deal-timer-s" class="deal-time-box">00</span>
+          </div>
+          <a href="#" class="deal-viewall">View all</a>
+        </div>
+      </div>
+
+      <!-- Bottom: 5/6 -->
+      <div class="deal-bottom relative bg-[#FFFCF5] p-3 sm:p-5">
+        <div id="deal-swiper" class="swiper deal-swiper">
+          <div id="deal-wrapper" class="swiper-wrapper"></div>
+        </div>
+        <div id="deal-state" class="deal-state hidden"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--conclusion-->
+<!-- ================= WHY VALENSA ================= -->
+<section id="why-section" class="bg-white py-20 sm:py-28">
+  <div class="sec-container">
+
+    <div class="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+
+      <!-- Left: story -->
+      <div class="why-reveal lg:sticky lg:top-40">
+        <p class="text-[11px] uppercase tracking-[0.3em] text-lilac-500">Our promise</p>
+        <h2 class="mt-3 font-display text-4xl leading-[1.08] text-lilac-900 sm:text-5xl">
+          Why <span class="italic text-lilac-600">Valensa?</span>
+        </h2>
+        <span class="why-rule mt-6 block"></span>
+        <p class="mt-6 max-w-md text-[15px] font-light leading-relaxed text-lilac-800/80">
+          Because great skin should never be a guessing game. Every Valensa formula is developed with dermatologists,
+          tested on real skin, and made with ingredients you can actually pronounce.
+        </p>
+        <p class="mt-4 max-w-md text-[15px] font-light leading-relaxed text-lilac-800/80">
+          We believe luxury is honesty: transparent labels, visible results, and care that feels as good as it works.
+        </p>
+        <a href="#" class="why-cta mt-8">Read our story</a>
+      </div>
+
+      <!-- Right: pillars -->
+      <div class="grid gap-4 sm:grid-cols-2 sm:gap-5">
+
+        <article class="why-card why-reveal" style="--wd:.05s">
+          <span class="why-icon">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4 6 6.6 6 10a6 6 0 0 1-12 0c0-3.4 2.5-6 6-10Z"/><path d="M9.5 14a2.5 2.5 0 0 0 2.5 2.5"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-2xl text-lilac-900">Clean formulas</h3>
+          <p class="mt-2 text-[14px] font-light leading-relaxed text-lilac-800/75">No parabens, no harsh sulfates, no hidden fillers. Only what your skin truly needs.</p>
+        </article>
+
+        <article class="why-card why-reveal" style="--wd:.15s">
+          <span class="why-icon">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2.2 2.2L15 10"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-2xl text-lilac-900">Dermatologist tested</h3>
+          <p class="mt-2 text-[14px] font-light leading-relaxed text-lilac-800/75">Every product is clinically evaluated for safety and gentleness, even on sensitive skin.</p>
+        </article>
+
+        <article class="why-card why-reveal" style="--wd:.25s">
+          <span class="why-icon">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-2xl text-lilac-900">Cruelty free</h3>
+          <p class="mt-2 text-[14px] font-light leading-relaxed text-lilac-800/75">Never tested on animals, at any stage. Beauty with a conscience, always.</p>
+        </article>
+
+        <article class="why-card why-reveal" style="--wd:.35s">
+          <span class="why-icon">
+            <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 14.4 9l5.9.5-4.5 3.9 1.4 5.8L12 16.2 6.8 19.2l1.4-5.8L3.7 9.5 9.6 9 12 3.5Z"/></svg>
+          </span>
+          <h3 class="mt-5 font-display text-2xl text-lilac-900">Visible results</h3>
+          <p class="mt-2 text-[14px] font-light leading-relaxed text-lilac-800/75">Most customers notice softer, more radiant skin within four weeks of daily use.</p>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Stats band -->
+    <div class="why-stats why-reveal mt-16 grid grid-cols-2 gap-y-8 rounded-[28px] border border-lilac-100 bg-lilac-50/60 px-6 py-10 sm:mt-20 sm:px-10 lg:grid-cols-4">
+      <div class="why-stat">
+        <p class="font-display text-4xl text-lilac-800 sm:text-5xl"><span data-why-count="120000">0</span>+</p>
+        <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-lilac-700/80">Happy customers</p>
+      </div>
+      <div class="why-stat">
+        <p class="font-display text-4xl text-lilac-800 sm:text-5xl"><span data-why-count="98">0</span>%</p>
+        <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-lilac-700/80">Would recommend</p>
+      </div>
+      <div class="why-stat">
+        <p class="font-display text-4xl text-lilac-800 sm:text-5xl"><span data-why-count="45">0</span>+</p>
+        <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-lilac-700/80">Signature products</p>
+      </div>
+      <div class="why-stat">
+        <p class="font-display text-4xl text-lilac-800 sm:text-5xl"><span data-why-count="30">0</span></p>
+        <p class="mt-1 text-[11px] uppercase tracking-[0.22em] text-lilac-700/80">Countries served</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Thin lilac divider -->
+<div class="h-px w-full bg-lilac-200"></div>
+
+<!-- ================= FOOTER ================= -->
+<footer id="ftr-root" class="bg-white">
+
+  <!-- Service strip -->
+  <div class="sec-container pt-14">
+    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+
+      <div class="ftr-service">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-lilac-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="17.5" cy="17.5" r="1.5"/></svg>
+        <div><p class="text-[13px] font-medium text-lilac-900">Free shipping</p><p class="text-[12px] font-light text-lilac-800/70">On orders over $60</p></div>
+      </div>
+
+      <div class="ftr-service">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-lilac-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg>
+        <div><p class="text-[13px] font-medium text-lilac-900">30-day returns</p><p class="text-[12px] font-light text-lilac-800/70">Easy, no questions asked</p></div>
+      </div>
+
+      <div class="ftr-service">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-lilac-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <div><p class="text-[13px] font-medium text-lilac-900">Secure payment</p><p class="text-[12px] font-light text-lilac-800/70">Encrypted checkout</p></div>
+      </div>
+
+      <div class="ftr-service">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-lilac-600" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>
+        <div><p class="text-[13px] font-medium text-lilac-900">Customer care</p><p class="text-[12px] font-light text-lilac-800/70">Skin experts, 7 days a week</p></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main footer -->
+  <div class="sec-container py-14 sm:py-16">
+    <div class="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10">
+
+      <!-- Brand + newsletter -->
+      <div>
+        <!-- LOGO SLOT (replace the inner div with your <img>) -->
+        <a href="#" id="ftr-logo-slot" class="inline-block" aria-label="Valensa home">
+          <div class="grid h-10 w-40 place-items-center rounded-md border border-dashed border-lilac-300 text-[10px] tracking-[0.3em] text-lilac-400">YOUR LOGO</div>
+        </a>
+        <p class="mt-5 max-w-sm text-[14px] font-light leading-relaxed text-lilac-800/75">
+          Clinically inspired skincare and artful beauty, crafted for skin that glows from within.
+        </p>
+
+        <form id="ftr-form" class="mt-7 max-w-sm" novalidate>
+          <label for="ftr-email" class="text-[11px] uppercase tracking-[0.22em] text-lilac-700">Join the Valensa circle</label>
+          <div class="ftr-field mt-3">
+            <input id="ftr-email" type="email" placeholder="Your email address" autocomplete="email" class="ftr-input" />
+            <button type="submit" class="ftr-btn">Subscribe</button>
+          </div>
+          <p id="ftr-msg" class="mt-2 min-h-[18px] text-[12px] text-lilac-600" aria-live="polite"></p>
+        </form>
+
+        <div class="mt-4 flex gap-2.5">
+          <a href="#" class="ftr-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".8" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="ftr-social" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M10.5 20.5 12.5 11M9 10a3.5 3.5 0 0 1 6.5 1.5c0 2-1.3 3.5-3 3.5"/></svg>
+          </a>
+          <a href="#" class="ftr-social" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m10.5 9.5 4 2.5-4 2.5v-5Z"/></svg>
+          </a>
+          <a href="#" class="ftr-social" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.4 2.5 2 4 5 4.2"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <nav aria-label="Footer shop">
+        <h3 class="ftr-title">Shop</h3>
+        <ul class="mt-5 space-y-3">
+          <li><a href="#" class="ftr-link">Cleansers</a></li>
+          <li><a href="#" class="ftr-link">Serums</a></li>
+          <li><a href="#" class="ftr-link">Moisturizers</a></li>
+          <li><a href="#" class="ftr-link">Sun Care</a></li>
+          <li><a href="#" class="ftr-link">Masks</a></li>
+          <li><a href="#" class="ftr-link">Makeup</a></li>
+        </ul>
+      </nav>
+
+      <!-- Company -->
+      <nav aria-label="Footer company">
+        <h3 class="ftr-title">Company</h3>
+        <ul class="mt-5 space-y-3">
+          <li><a href="#" class="ftr-link">Our story</a></li>
+          <li><a href="#" class="ftr-link">Ingredients</a></li>
+          <li><a href="#" class="ftr-link">Sustainability</a></li>
+          <li><a href="#" class="ftr-link">Journal</a></li>
+          <li><a href="#" class="ftr-link">Careers</a></li>
+        </ul>
+      </nav>
+
+      <!-- Support -->
+      <nav aria-label="Footer support">
+        <h3 class="ftr-title">Support</h3>
+        <ul class="mt-5 space-y-3">
+          <li><a href="#" class="ftr-link">Contact us</a></li>
+          <li><a href="#" class="ftr-link">Shipping &amp; delivery</a></li>
+          <li><a href="#" class="ftr-link">Returns &amp; refunds</a></li>
+          <li><a href="#" class="ftr-link">Skin consultation</a></li>
+          <li><a href="#" class="ftr-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bg-lilac-800">
+    <div class="sec-container flex flex-col items-center justify-between gap-3 py-5 text-center sm:flex-row sm:text-left">
+      <p class="text-[12px] font-light tracking-wide text-lilac-100">© <span id="ftr-year">2026</span> Valensa. All rights reserved.</p>
+      <div class="flex items-center gap-5 text-[12px] font-light text-lilac-100">
+        <a href="#" class="ftr-legal">Privacy</a>
+        <a href="#" class="ftr-legal">Terms</a>
+        <a href="#" class="ftr-legal">Cookies</a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./src/main.js"></script>
+</body>
+</html>
